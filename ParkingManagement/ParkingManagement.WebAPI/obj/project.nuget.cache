@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "W95AnLdOUlQWKrNBPI0tkyOVa3cOy+wJ0oEc5rJzEQUQCuO3+SQ6nD+f3TZ9UFy28UQdopbCGnbabtYU+tT78g==",
+  "dgSpecHash": "MTBsiHRFGDqwowu3BRweiG3HOMPq6fgtUtWNbK4vCMgo2VKkViANHm3J/7UtCokDthyskMUn2ed3Tan85xzxUQ==",
   "success": true,
-  "projectFilePath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.WebAPI\\ParkingManagement.WebAPI.csproj",
+  "projectFilePath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.WebAPI\\ParkingManagement.WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mohits\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\mohits\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

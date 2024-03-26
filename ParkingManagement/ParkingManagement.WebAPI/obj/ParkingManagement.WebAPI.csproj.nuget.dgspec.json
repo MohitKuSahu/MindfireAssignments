@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.WebAPI\\ParkingManagement.WebAPI.csproj": {}
+    "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.WebAPI\\ParkingManagement.WebAPI.csproj": {}
   },
   "projects": {
-    "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj": {
+    "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj",
+        "projectUniqueName": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj",
         "projectName": "ParkingManagement.BL",
-        "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj",
+        "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj",
         "packagesPath": "C:\\Users\\mohits\\.nuget\\packages\\",
-        "outputPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.BL\\obj\\",
+        "outputPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.BL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mohits\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj": {
-                "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj"
+              "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj": {
+                "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj"
               },
-              "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj": {
-                "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj"
+              "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj": {
+                "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj"
               }
             }
           }
@@ -66,14 +66,14 @@
         }
       }
     },
-    "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj": {
+    "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj",
+        "projectUniqueName": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj",
         "projectName": "ParkingManagement.DAL",
-        "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj",
+        "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj",
         "packagesPath": "C:\\Users\\mohits\\.nuget\\packages\\",
-        "outputPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.DAL\\obj\\",
+        "outputPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mohits\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -90,8 +90,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj": {
-                "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj"
+              "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj": {
+                "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj"
               }
             }
           }
@@ -137,14 +137,14 @@
         }
       }
     },
-    "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj": {
+    "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj",
+        "projectUniqueName": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj",
         "projectName": "ParkingManagement.Models",
-        "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj",
+        "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj",
         "packagesPath": "C:\\Users\\mohits\\.nuget\\packages\\",
-        "outputPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Models\\obj\\",
+        "outputPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mohits\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -192,14 +192,14 @@
         }
       }
     },
-    "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Utils\\ParkingManagement.Utils.csproj": {
+    "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Utils\\ParkingManagement.Utils.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Utils\\ParkingManagement.Utils.csproj",
+        "projectUniqueName": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Utils\\ParkingManagement.Utils.csproj",
         "projectName": "ParkingManagement.Utils",
-        "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Utils\\ParkingManagement.Utils.csproj",
+        "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Utils\\ParkingManagement.Utils.csproj",
         "packagesPath": "C:\\Users\\mohits\\.nuget\\packages\\",
-        "outputPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Utils\\obj\\",
+        "outputPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Utils\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mohits\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -247,14 +247,14 @@
         }
       }
     },
-    "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.WebAPI\\ParkingManagement.WebAPI.csproj": {
+    "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.WebAPI\\ParkingManagement.WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.WebAPI\\ParkingManagement.WebAPI.csproj",
+        "projectUniqueName": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.WebAPI\\ParkingManagement.WebAPI.csproj",
         "projectName": "ParkingManagement.WebAPI",
-        "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.WebAPI\\ParkingManagement.WebAPI.csproj",
+        "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.WebAPI\\ParkingManagement.WebAPI.csproj",
         "packagesPath": "C:\\Users\\mohits\\.nuget\\packages\\",
-        "outputPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.WebAPI\\obj\\",
+        "outputPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mohits\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -271,17 +271,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj": {
-                "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj"
+              "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj": {
+                "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj"
               },
-              "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj": {
-                "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj"
+              "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj": {
+                "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj"
               },
-              "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj": {
-                "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj"
+              "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj": {
+                "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj"
               },
-              "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Utils\\ParkingManagement.Utils.csproj": {
-                "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Utils\\ParkingManagement.Utils.csproj"
+              "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Utils\\ParkingManagement.Utils.csproj": {
+                "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Utils\\ParkingManagement.Utils.csproj"
               }
             }
           }

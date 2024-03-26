@@ -2788,11 +2788,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj",
+      "projectUniqueName": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj",
       "projectName": "ParkingManagement.BL",
-      "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj",
+      "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj",
       "packagesPath": "C:\\Users\\mohits\\.nuget\\packages\\",
-      "outputPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.BL\\obj\\",
+      "outputPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.BL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mohits\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2809,11 +2809,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj": {
-              "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj"
+            "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj": {
+              "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.DAL\\ParkingManagement.DAL.csproj"
             },
-            "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj": {
-              "projectPath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj"
+            "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj": {
+              "projectPath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.Models\\ParkingManagement.Models.csproj"
             }
           }
         }

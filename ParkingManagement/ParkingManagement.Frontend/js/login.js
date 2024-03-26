@@ -1,13 +1,11 @@
 document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); 
 
-    // Gather user credentials
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const type = document.getElementById("type").value;
 
-    // Send credentials to your backend for authentication
     fetch("https://localhost:7084/api/LoginAPI", {
         method: "POST",
         headers: {
@@ -38,7 +36,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     })
     .catch(error => {
         console.error("Error:", error);
-        alert("An error occurred during authentication.Plz check your details");
+        alert("Invalid UserName or Password");
     });
 });
 

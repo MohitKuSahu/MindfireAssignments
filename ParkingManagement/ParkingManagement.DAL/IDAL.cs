@@ -27,7 +27,8 @@ namespace ParkingManagement.DAL
         Task<bool> VehicleAsync(VehicleParkingModel model);
 
         Task<bool> DeleteVehicleParkingAsync(int parkingSpaceId);
-
+        public Task<bool> InsertUser(UserModel user);
+        public Task<bool> CheckIfEmailAlreadyExists(string userEmail);
         Task<int> CheckIfUserExists(UserModel user);
         Task<List<ReportModel>> GetParkingReportAsync(DateOnly startDate, DateOnly endDate);
 

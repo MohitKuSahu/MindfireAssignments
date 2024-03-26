@@ -10,3 +10,15 @@ D:\MINDFIRE\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\ParkingM
 D:\MINDFIRE\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\refint\ParkingManagement.Models.dll
 D:\MINDFIRE\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\ParkingManagement.Models.pdb
 D:\MINDFIRE\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\ref\ParkingManagement.Models.dll
+D:\MindfireAssignment\ParkingManagement\ParkingManagement.Models\bin\Debug\net8.0\ParkingManagement.Models.deps.json
+D:\MindfireAssignment\ParkingManagement\ParkingManagement.Models\bin\Debug\net8.0\ParkingManagement.Models.dll
+D:\MindfireAssignment\ParkingManagement\ParkingManagement.Models\bin\Debug\net8.0\ParkingManagement.Models.pdb
+D:\MindfireAssignment\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\ParkingManagement.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\MindfireAssignment\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\ParkingManagement.Models.AssemblyInfoInputs.cache
+D:\MindfireAssignment\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\ParkingManagement.Models.AssemblyInfo.cs
+D:\MindfireAssignment\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\ParkingManagement.Models.csproj.CoreCompileInputs.cache
+D:\MindfireAssignment\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\ParkingManagement.Models.sourcelink.json
+D:\MindfireAssignment\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\ParkingManagement.Models.dll
+D:\MindfireAssignment\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\refint\ParkingManagement.Models.dll
+D:\MindfireAssignment\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\ParkingManagement.Models.pdb
+D:\MindfireAssignment\ParkingManagement\ParkingManagement.Models\obj\Debug\net8.0\ref\ParkingManagement.Models.dll

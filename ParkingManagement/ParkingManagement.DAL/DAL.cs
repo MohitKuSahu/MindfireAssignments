@@ -124,7 +124,25 @@ namespace ParkingManagement.DAL
                 return false;
             else
             {
-               await DeleteVehicleParkingAsync(spaceToDelete.ParkingSpaceId);
+                var vehicleToDelete = await _parkingManagementContext.VehicleParkings.FirstOrDefaultAsync(s => s.ParkingSpaceId == spaceToDelete.ParkingSpaceId);
+
+                if (vehicleToDelete!=null)
+                {
+                    _parkingManagementContext.VehicleParkings.Remove(vehicleToDelete);
+                    await _parkingManagementContext.SaveChangesAsync();
+                }
+
+                var allBookingsToDelete = await _parkingManagementContext.DailyBookings
+                                           .Where(s => s.ParkingSpaceId == spaceToDelete.ParkingSpaceId)
+                                           .ToListAsync();
+
+                if (allBookingsToDelete.Any())
+                {
+                    _parkingManagementContext.DailyBookings.RemoveRange(allBookingsToDelete);
+                    await _parkingManagementContext.SaveChangesAsync();
+                }
+
+
                 _parkingManagementContext.ParkingSpaces.Remove(spaceToDelete);
                 await _parkingManagementContext.SaveChangesAsync();
                 return true;
@@ -189,8 +207,8 @@ namespace ParkingManagement.DAL
                 {
                     ParkingZoneId = model.ParkingZoneId,
                     ParkingSpaceId = model.ParkingSpaceId,
-                    BookingDateTime = DateTime.Now,
-                    ReleaseDateTime = DateTime.Now,
+                    BookingDateTime = model.BookingDateTime,
+                    ReleaseDateTime = model.ReleaseDateTime,
                     VehicleRegistration = model.VehicleRegistration,
 
                 };
@@ -245,7 +263,23 @@ namespace ParkingManagement.DAL
             await _parkingManagementContext.SaveChangesAsync();
         }
 
+        public async Task<bool> InsertUser(UserModel user)
+        {
+            bool flag = false;
+                var newUser = new User
+                {
+                    Name = user.Name,
+                    Email = user.Email,
+                    Password = user.Password,
+                    Type = user.Type
+                };
 
+            _parkingManagementContext.Users.Add(newUser);
+                await _parkingManagementContext.SaveChangesAsync();
+                flag = true;
+            
+            return flag;
+        }
         public async Task<int> CheckIfUserExists(UserModel user)
         {
             int userId = -1;
@@ -259,6 +293,19 @@ namespace ParkingManagement.DAL
                 }
             
             return userId;
+        }
+
+        public async Task<bool> CheckIfEmailAlreadyExists(string userEmail)
+        {
+            bool flag = false;
+
+                var user = await _parkingManagementContext.Users.FirstOrDefaultAsync(u => u.Email == userEmail);
+
+                if (user != null)
+                {
+                    flag = true;
+                }
+            return flag;
         }
         public async Task<List<ReportModel>> GetParkingReportAsync(DateOnly startDate, DateOnly endDate)
         {

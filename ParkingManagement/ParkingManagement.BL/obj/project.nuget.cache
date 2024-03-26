@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yFrjud6/BNwd/YSalXNcd5uR+KqH2UqvGIKSGheba9z2dE/xfbvpJ/M6IjqFojBmp37hGiv/Ej7wb60E4Na2oQ==",
+  "dgSpecHash": "rmT+aw6uhq/V7WIApc2efR/UQ03tMp8QlUAnbNm3cpbuL5plUnuxkQKBY6kfdcyfjVnNqhN8+Qq/6V/NWivGVA==",
   "success": true,
-  "projectFilePath": "D:\\MindfireAssignments\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj",
+  "projectFilePath": "D:\\MindfireAssignment\\ParkingManagement\\ParkingManagement.BL\\ParkingManagement.BL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mohits\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\mohits\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

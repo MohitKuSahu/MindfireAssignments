@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login Page</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
 <link rel="stylesheet" href="css/LoginPage.css">
 </head>
 <body>
@@ -12,26 +13,29 @@
     <form id="loginForm">
       <center><h1>Login</h1></center>
       <div class="form-group">
-        <label for="name">Name:</label>
+        <label for="name"><i class="fas fa-user"></i> Name:</label>
         <input type="text" class="form-control" id="name" name="name" required>
       </div>
       <div class="form-group">
-        <label for="email">Email:</label>
+        <label for="email"><i class="fas fa-envelope"></i> Email:</label>
         <input type="email" class="form-control" id="email" name="email" required>
       </div>
       <div class="form-group">
-        <label for="password">Password:</label>
+        <label for="password"><i class="fas fa-lock"></i> Password:</label>
         <input type="password" class="form-control" id="password" name="password" required>
       </div>
       <div class="form-group">
-        <label for="type">Type:</label>
+        <label for="type"><i class="fas fa-user-tag"></i> Type:</label>
         <select class="form-control" id="type" name="type">
           <option value="Booking Counter Agent">Booking Counter Agent</option>
           <option value="Parking Zone Assistant">Parking Zone Assistant</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary btn-block">Login</button>
+      <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt"></i> Login</button>
     </form>
+    <div class="text-center mt-2">
+      <a href="signup.html"><i class="fas fa-user-plus"></i> Sign Up</a>
+    </div>
  </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

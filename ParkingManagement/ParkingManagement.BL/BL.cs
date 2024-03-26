@@ -72,6 +72,14 @@ namespace ParkingManagement.BL
             return await _dataService.DeleteVehicleParkingAsync(parkingSpaceId);
         }
 
+        public Task<bool> CheckIfEmailAlreadyExists(string userEmail)
+        {
+            return _dataService.CheckIfEmailAlreadyExists(userEmail);
+        }
+        public Task<bool> InsertUser(UserModel user)
+        {
+            return _dataService.InsertUser(user);
+        }
 
         public async Task<int> CheckIfUserExists(UserModel user)
         {
