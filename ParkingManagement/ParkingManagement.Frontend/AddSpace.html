@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Selection</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/AddSpacePage.css">
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+    <div class="container">
+        <h2 class="mt-5 display-4 text-center">Add Space</h2>
+        <form id="parking-form">
+            <div class="form-row align-items-center">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="parking-zone" class="col-form-label">Parking Zone (e.g., A, B, C):</label>
+                        <input type="text" class="form-control" id="parking-zone" name="parking-zone" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="parking-space" class="col-form-label">Parking Space Number (e.g., 1, 10,
+                            23):</label>
+                        <input type="number" class="form-control" id="parking-space" name="parking-space" min="1"
+                            max="99" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row justify-content-between">
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary btn-block">ADD SPACE</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-danger btn-block" id="delete-btn">DELETE SPACE</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
+
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/AddSpaceScript.js"></script>
+    <script src="js/redirect.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+label {
+    font-weight: bold; /* Make labels bold */
+}
+
+
+#auto-refresh-indicator {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+
+.parking-space {
+    width: 80px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#color-indication {
+    display: inline-block;
+}
+
+.color-block {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.lightgreen {
+    background-color: lightgreen;
+}
+
+.lightgray {
+    background-color: lightgray;
+}
+
+.status-text {
+    display: inline-block;
+    margin-bottom: 10px; /* Add space after the text */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background */
+}
+#vehicle-modal {
+    z-index: 1050; /* Adjust the value as needed */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Increased shadow */
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px; /* Slightly rounded corners */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Increased shadow */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #888; /* Dimmed close button color */
+}
+
+.close:hover {
+    color: #333; /* Hover color for close button */
+}
+
+.color-block {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%; /* Circular color blocks */
+}
+

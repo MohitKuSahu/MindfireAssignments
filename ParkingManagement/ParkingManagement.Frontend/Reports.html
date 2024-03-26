@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Report</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/ReportPage.css">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <div class="container mt-5">
+        <h1 class="mt-5 display-4">Parking Reports</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" name="start-date" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" name="end-date" class="form-control">
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <button id="generate-report-btn" class="btn btn-primary mt-2">Generate Report</button>
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <button type="button" class="btn btn-primary" id="exportPdf">
+                    <i class="fas fa-file-pdf"></i> Export to Pdf
+                   </button>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <table id="report-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Parking Zone</th>
+                            <th>Parking Space</th>
+                            <th>Total Bookings</th>
+                            <th>Vehicle Parked</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Report data will be dynamically populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/Reports.js"></script> <!-- Include your JavaScript file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+    <script src="js/redirect.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+21-03-2024 21:19:11==>System.DivideByZeroException: Attempted to divide by zero.
+   at ParkingManagement.WebAPI.Controllers.VehicleParkingAPIController.AddVehicle(VehicleParkingModel model) in D:\MINDFIRE\ParkingManagement\ParkingManagement.WebAPI\Controllers\VehicleParkingAPIController.cs:line 28
