@@ -62,9 +62,9 @@ namespace ParkingManagement.BL
         {
             return await _dataService.ListVehicleParkingByIdAsync(parkingSpaceId);
         }
-        public async Task<bool> VehicleAsync(VehicleParkingModel model)
+        public async Task<bool> UpdateVehicleAsync(VehicleParkingModel model)
         {
-            return await _dataService.VehicleAsync(model);
+            return await _dataService.UpdateVehicleAsync(model);
         }
 
         public async Task<bool> DeleteVehicleParkingAsync(int parkingSpaceId)

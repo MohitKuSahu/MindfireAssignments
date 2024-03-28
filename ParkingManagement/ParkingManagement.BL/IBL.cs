@@ -23,7 +23,7 @@ namespace ParkingManagement.BL
 
         Task<List<VehicleParkingModel>> ListVehicleParkingByIdAsync(int parkingSpaceId);
 
-        Task<bool> VehicleAsync(VehicleParkingModel model);
+        Task<bool> UpdateVehicleAsync(VehicleParkingModel model);
 
         Task<bool> DeleteVehicleParkingAsync(int parkingSpaceId);
 

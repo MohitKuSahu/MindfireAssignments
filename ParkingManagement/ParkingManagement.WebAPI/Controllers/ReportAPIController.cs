@@ -23,7 +23,6 @@ namespace ParkingManagement.WebAPI.Controllers
         }
 
        
-        [Authorize]
         [HttpGet("{startDate}/{endDate}")]
         public async Task<ActionResult<List<ReportModel>>> GetReportAsync(string startDate, string endDate)
         {
@@ -45,8 +44,10 @@ namespace ParkingManagement.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
+                _Log.AddException(ex);
+                return BadRequest(ex);
             }
+        
         }
     }
 }

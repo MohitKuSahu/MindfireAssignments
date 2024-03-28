@@ -126,7 +126,7 @@ namespace ParkingManagement.DAL
             {
                 var vehicleToDelete = await _parkingManagementContext.VehicleParkings.FirstOrDefaultAsync(s => s.ParkingSpaceId == spaceToDelete.ParkingSpaceId);
 
-                if (vehicleToDelete!=null)
+                if (vehicleToDelete != null)
                 {
                     _parkingManagementContext.VehicleParkings.Remove(vehicleToDelete);
                     await _parkingManagementContext.SaveChangesAsync();
@@ -183,7 +183,7 @@ namespace ParkingManagement.DAL
             return vehicleParking;
         }
 
-        public async Task<bool> VehicleAsync(VehicleParkingModel model)
+        public async Task<bool> UpdateVehicleAsync(VehicleParkingModel model)
         {
 
             var result = await _parkingManagementContext.VehicleParkings
@@ -266,46 +266,40 @@ namespace ParkingManagement.DAL
         public async Task<bool> InsertUser(UserModel user)
         {
             bool flag = false;
-                var newUser = new User
-                {
-                    Name = user.Name,
-                    Email = user.Email,
-                    Password = user.Password,
-                    Type = user.Type
-                };
+            var newUser = new User
+            {
+                Name = user.Name,
+                Email = user.Email,
+                Password = user.Password,
+                Type = user.Type
+            };
 
             _parkingManagementContext.Users.Add(newUser);
-                await _parkingManagementContext.SaveChangesAsync();
-                flag = true;
-            
+            await _parkingManagementContext.SaveChangesAsync();
+            flag = true;
+
             return flag;
         }
         public async Task<int> CheckIfUserExists(UserModel user)
         {
             int userId = -1;
-          
-                var users = await _parkingManagementContext.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
 
-                if (users != null && users.Password == user.Password && users.Type==user.Type)
-                {
-                     
-                    userId = users.UserId;
-                }
-            
+            var users = await _parkingManagementContext.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+
+            if (users != null && users.Password == user.Password)
+            {
+                userId = users.UserId;
+                user.UserId = userId;
+                user.Type = users.Type;
+            }
+
             return userId;
         }
 
         public async Task<bool> CheckIfEmailAlreadyExists(string userEmail)
         {
-            bool flag = false;
-
-                var user = await _parkingManagementContext.Users.FirstOrDefaultAsync(u => u.Email == userEmail);
-
-                if (user != null)
-                {
-                    flag = true;
-                }
-            return flag;
+            var user = await _parkingManagementContext.Users.AnyAsync(u => u.Email == userEmail);
+            return user;
         }
         public async Task<List<ReportModel>> GetParkingReportAsync(DateOnly startDate, DateOnly endDate)
         {
@@ -327,10 +321,7 @@ namespace ParkingManagement.DAL
 
                 var totalBookings = bookings.Sum(db => db.TotalBookings);
 
-                var parkedSpaces = from vp in _parkingManagementContext.VehicleParkings
-                                   where vp.BookingDateTime != null &&
-                                         (vp.ReleaseDateTime == null || vp.ReleaseDateTime > currentTime)
-                                   select vp.ParkingSpaceId;
+
 
                 var isSpaceParked = await _parkingManagementContext.VehicleParkings
       .AnyAsync(vp => vp.ParkingSpaceId == ps.ParkingSpaceId &&
@@ -349,7 +340,9 @@ namespace ParkingManagement.DAL
                 });
             }
 
-            return report;
+            return report.OrderBy(r => r.ParkingZoneTitle)
+                         .ThenBy(r => r.ParkingSpaceTitle)
+                         .ToList();
         }
 
     }

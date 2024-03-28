@@ -24,7 +24,7 @@ namespace ParkingManagement.DAL
 
         Task<List<VehicleParkingModel>> ListVehicleParkingByIdAsync(int parkingSpaceId);
 
-        Task<bool> VehicleAsync(VehicleParkingModel model);
+        Task<bool> UpdateVehicleAsync(VehicleParkingModel model);
 
         Task<bool> DeleteVehicleParkingAsync(int parkingSpaceId);
         public Task<bool> InsertUser(UserModel user);

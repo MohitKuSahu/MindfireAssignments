@@ -1,35 +1,40 @@
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault(); 
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const type = document.getElementById("type").value;
+    var name = $('#name').val();
+    var email = $('#email').val();
+    var password = $('#password').val();
+    
+ 
+    var user = {
+        name: name,
+        email: email,
+        password: password,
+        type:"default"
+       
+    };
 
     fetch("https://localhost:7084/api/LoginAPI", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            name: name,
-            email: email,
-            password: password,
-            type: type
-        })
+        body: JSON.stringify(user)
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Authentication failed');
+            alert('Error in Ajax Request')
+            return response.text().then(errorMessage => {
+                throw new Error(errorMessage);
+            });
         }
         return response.json();
     })
     .then(data => {
-        // Check if authentication was successful
         if (data && data.token) {
             localStorage.setItem("jwtToken", data.token);
             alert("Successfully Login.. Welcome To Site.");
-            window.location.href = "ParkingManagement.html";
+            window.location.href = "DashBoard.html";
         } else {
             alert("Authentication failed. Please try again.");
         }
@@ -39,5 +44,3 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         alert("Invalid UserName or Password");
     });
 });
-
-

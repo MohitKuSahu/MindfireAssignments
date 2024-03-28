@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ParkingManagement.DAL;
 using ParkingManagement.Utils;
+using ParkingManagement.DAL.Models;
 
 
 [Route("api/[controller]")]
@@ -17,21 +18,30 @@ using ParkingManagement.Utils;
 public class LoginAPIController : ControllerBase
 {
     private readonly IConfiguration _config;
-    private readonly IBL _userBAL;
+    private readonly IBL _BAL;
     private readonly ILog _Log;
 
     public LoginAPIController(IConfiguration config, IBL userBAL, ILog Log)
     {
         _config = config;
-        _userBAL = userBAL;
+        _BAL = userBAL;
         _Log = Log; 
     }
 
-    private async Task<UserModel> AuthenticateUserAsync(UserModel user)
+    private async Task<UserModel?> AuthenticateUserAsync(UserModel user)
     {
-        int userId = await _userBAL.CheckIfUserExists(user);
-
+        int userId = -1;
+        try
+        {
+            userId = await _BAL.CheckIfUserExists(user);
+        }
+        catch (Exception ex)
+        {
+            _Log.AddException(ex);
+             NotFound();
+        }
         return userId != -1 ? user : null;
+
     }
 
     private string GenerateJwtToken(UserModel user)
@@ -40,7 +50,7 @@ public class LoginAPIController : ControllerBase
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
         var claims = new[]
-      {
+       {
             new Claim(ClaimTypes.Name, user.Email),
             new Claim(ClaimTypes.Role, user.Type)
         };
@@ -58,18 +68,29 @@ public class LoginAPIController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost]
-    public async Task<IActionResult> LoginAsync([FromBody] UserModel user)
+    public async Task<IActionResult> LoginAsync(UserModel user)
     {
-        IActionResult response = Unauthorized();
-        var authenticatedUser = await AuthenticateUserAsync(user);
-
-        if (authenticatedUser != null)
+        try
         {
-            var token = GenerateJwtToken(authenticatedUser);
-            response = Ok(new { token });
-        }
+            
+            var authenticatedUser = await AuthenticateUserAsync(user);
 
-        return response;
+            if (authenticatedUser != null)
+            {
+                var token = GenerateJwtToken(authenticatedUser);
+                return Ok(new { Token = token, authenticatedUser.UserId });
+            }
+            else
+            {
+                return Unauthorized();
+            }
+        }
+        catch (Exception ex)
+        {
+            _Log.AddException(ex);
+            return BadRequest(ex);
+        }
+       
     }
 
    

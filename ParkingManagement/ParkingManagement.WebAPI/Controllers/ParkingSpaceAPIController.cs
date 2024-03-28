@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ParkingManagement.WebAPI.Controllers
 {
-   
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ParkingSpaceAPIController : ControllerBase
@@ -21,7 +21,6 @@ namespace ParkingManagement.WebAPI.Controllers
             _Log = Log;
         }
 
-        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<ParkingSpaceModel>>> GetParkingSpace()
         {
@@ -38,7 +37,7 @@ namespace ParkingManagement.WebAPI.Controllers
 
         }
 
-        [Authorize]
+        
         [HttpGet("{ParkingZoneId}")]
         public async Task<ActionResult<List<ParkingSpaceModel>>> ListParkingSpaceById(int ParkingZoneId)
         {

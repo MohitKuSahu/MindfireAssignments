@@ -8,7 +8,7 @@ using ParkingManagement.Utils;
 
 namespace ParkingManagement.WebAPI.Controllers
 {
-    
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class VehicleParkingAPIController : ControllerBase
@@ -22,7 +22,7 @@ namespace ParkingManagement.WebAPI.Controllers
             _Log = log;
         }
 
-        [Authorize]
+      
         [HttpGet]
         public async Task<ActionResult<List<VehicleParkingModel>>> GetVehicleParking()
         {
@@ -56,28 +56,12 @@ namespace ParkingManagement.WebAPI.Controllers
 
 
         [Authorize(Roles = "Booking Counter Agent")]
-        [HttpPost]
-        public async Task<ActionResult<VehicleParkingModel>> AddVehicle(VehicleParkingModel model)
-        {
-            try
-            {
-                await _BAL.VehicleAsync(model);
-                return Ok(model);
-            }
-            catch (Exception ex)
-            {
-                _Log.AddException(ex);
-                return BadRequest(ex);
-            }
-        }
-
-        [Authorize(Roles = "Booking Counter Agent")]
         [HttpPut]
         public async Task<ActionResult<VehicleParkingModel>> UpdateVehicle(VehicleParkingModel model)
         {
             try
             {
-                await _BAL.VehicleAsync(model);
+                await _BAL.UpdateVehicleAsync(model);
                 return Ok();
             }
             catch (Exception ex) { 

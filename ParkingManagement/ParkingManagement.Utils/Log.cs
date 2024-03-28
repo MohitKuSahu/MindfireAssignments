@@ -19,11 +19,11 @@ namespace ParkingManagement.Utils
         {
             _fileFolderPath = fileFolderPath;
         }
+
         public void AddException(Exception inputData)
         {
             string fileName = DateTime.Now.ToString("yyyyMMdd") + ".txt";
             string filePath = Path.Combine(_fileFolderPath, fileName);
-
 
             if (!Directory.Exists(_fileFolderPath))
             {
@@ -32,8 +32,18 @@ namespace ParkingManagement.Utils
 
             using (StreamWriter writer = new StreamWriter(filePath, true))
             {
-                writer.WriteLine(DateTime.Now + "==>" + inputData);
+                 writer.WriteLine(DateTime.Now + "==>" + inputData.Message);
+
+                if (inputData.InnerException!=null)
+                {
+                    writer.WriteLine(inputData.InnerException.Message);
+                }
+
+                writer.WriteLine();
             }
+
+        
         }
+
     }
 }

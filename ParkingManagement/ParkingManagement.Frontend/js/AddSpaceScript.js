@@ -4,20 +4,17 @@ $(document).ready(function() {
         var parkingZoneTitle = $('#parking-zone').val();
         var parkingSpaceNumber = $('#parking-space').val();
 
+        if (!parkingSpaceNumber || !parkingZoneTitle) {
+            alert('Please fill up the details');
+            return;
+        }
+
         if (parkingSpaceNumber < 10) {
             parkingSpaceNumber = '0' + parkingSpaceNumber;
         }
         var parkingSpaceTitle = parkingZoneTitle + parkingSpaceNumber; 
-        $.ajax({
-            type: 'POST',
-            url: 'https://localhost:7084/api/ParkingZoneAPI', 
-            headers: {
-                'Authorization': 'Bearer ' + (localStorage.getItem('jwtToken') || null)
-            },
-            data: JSON.stringify({ parkingZoneTitle: parkingZoneTitle }),
-            contentType: 'application/json',
-            dataType: 'json'
-        })
+
+        ajaxRequest('https://localhost:7084/api/ParkingZoneAPI', 'POST', JSON.stringify({ parkingZoneTitle: parkingZoneTitle }))
         .done(function(response) {
             if (response) {
                 var parkingZoneId = response.parkingZoneId;
@@ -25,16 +22,7 @@ $(document).ready(function() {
                     parkingZoneId: parkingZoneId,
                     parkingSpaceTitle: parkingSpaceTitle   
                 };
-                $.ajax({
-                    type: 'POST',
-                    url: 'https://localhost:7084/api/ParkingSpaceAPI',
-                    headers: {
-                        'Authorization': 'Bearer ' + (localStorage.getItem('jwtToken') || null)
-                    },
-                    data: JSON.stringify(requestData),
-                    contentType: 'application/json',
-                    dataType: 'json'
-                })
+                ajaxRequest('https://localhost:7084/api/ParkingSpaceAPI', 'POST', JSON.stringify(requestData))
                 .done(function(response) {
                     if (response.success) {
                         alert('Parking space added successfully!');
@@ -43,42 +31,37 @@ $(document).ready(function() {
                     }
                 })
                 .fail(function(xhr, status, error) {
-                    alert('It is Restricted only to Booking Agent. ' + error);
+                    alert('It is restricted only to Booking Agent. ' + error);
                 });
             } else {
                 alert('Failed to add parking zone. ' + response.message);
             }
         })
+        .fail(function(xhr, status, error) {
+            alert('It is restricted only to Booking Agent. ' + error);
+        });
     });
-});
 
-$('#delete-btn').click(function(event) {
-    event.preventDefault(); 
-    var parkingZoneTitle = $('#parking-zone').val();
-    var parkingSpaceNumber = $('#parking-space').val();
+    $('#delete-btn').click(function(event) {
+        event.preventDefault(); 
+        var parkingZoneTitle = $('#parking-zone').val();
+        var parkingSpaceNumber = $('#parking-space').val();
 
-    if (parkingSpaceNumber < 10) {
-        parkingSpaceNumber = '0' + parkingSpaceNumber;
-    }
-    var parkingSpaceTitle = parkingZoneTitle + parkingSpaceNumber; 
-
-    $.ajax({
-        type: 'DELETE',
-        url: `https://localhost:7084/api/ParkingSpaceAPI/${parkingSpaceTitle}`,
-        headers: {
-            'Authorization': 'Bearer ' + (localStorage.getItem('jwtToken') || null)
-        },
-    })
-    .done(function(response) {
-        if (response.success) {
-            alert('Parking space deleted successfully!');
-        } else {
-            alert('Failed to delete parking space. It does not exists.');
+        if (parkingSpaceNumber < 10) {
+            parkingSpaceNumber = '0' + parkingSpaceNumber;
         }
-    })
-    .fail(function(xhr, status, error) {
-        alert('It is Restricted only to Booking Agent ' + error);
-    });
+        var parkingSpaceTitle = parkingZoneTitle + parkingSpaceNumber; 
 
-     
+        ajaxRequest(`https://localhost:7084/api/ParkingSpaceAPI/${parkingSpaceTitle}`, 'DELETE', null)
+        .done(function(response) {
+            if (response.success) {
+                alert('Parking space deleted successfully!');
+            } else {
+                alert('Failed to delete parking space. It does not exist.');
+            }
+        })
+        .fail(function(xhr, status, error) {
+            alert('It is restricted only to Booking Agent ' + error);
+        });
+    });
 });

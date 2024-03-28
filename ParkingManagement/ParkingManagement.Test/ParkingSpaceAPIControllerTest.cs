@@ -13,19 +13,26 @@ namespace ParkingManagement.Tests.Controllers
 {
     public class ParkingSpaceAPIControllerTest
     {
+        private readonly Mock<IBL> _mockBL;
+        private readonly Mock<ILog> _mockLog;
+        private readonly ParkingSpaceAPIController _controller;
+
+        public ParkingSpaceAPIControllerTest()
+        {
+            _mockBL = new Mock<IBL>();
+            _mockLog = new Mock<ILog>();
+            _controller = new ParkingSpaceAPIController(_mockBL.Object, _mockLog.Object);
+        }
+
         [Fact]
         public async Task GetParkingSpace_Returns_OkObjectResult_With_Data()
         {
             // Arrange
-            var mockBL = new Mock<IBL>();
-            var mockLog = new Mock<ILog>();
-            var controller = new ParkingSpaceAPIController(mockBL.Object, mockLog.Object);
-            var expectedData = new List<ParkingSpaceModel>(); 
-
-            mockBL.Setup(bl => bl.ListParkingSpaceAsync()).ReturnsAsync(expectedData);
+            var expectedData = new List<ParkingSpaceModel> { new ParkingSpaceModel() };
+            _mockBL.Setup(bl => bl.ListParkingSpaceAsync()).ReturnsAsync(expectedData);
 
             // Act
-            var result = await controller.GetParkingSpace();
+            var result = await _controller.GetParkingSpace();
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
@@ -37,16 +44,12 @@ namespace ParkingManagement.Tests.Controllers
         public async Task ListParkingSpaceById_Returns_OkObjectResult_With_Data()
         {
             // Arrange
-            var mockBL = new Mock<IBL>();
-            var mockLog = new Mock<ILog>();
-            var controller = new ParkingSpaceAPIController(mockBL.Object, mockLog.Object);
-            var expectedData = new List<ParkingSpaceModel>(); 
-            var parkingZoneId = 1; 
-
-            mockBL.Setup(bl => bl.ListParkingSpaceByIdAsync(parkingZoneId)).ReturnsAsync(expectedData);
+            var expectedData = new List<ParkingSpaceModel> { new ParkingSpaceModel() };
+            var parkingZoneId = 1;
+            _mockBL.Setup(bl => bl.ListParkingSpaceByIdAsync(parkingZoneId)).ReturnsAsync(expectedData);
 
             // Act
-            var result = await controller.ListParkingSpaceById(parkingZoneId);
+            var result = await _controller.ListParkingSpaceById(parkingZoneId);
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
@@ -57,49 +60,41 @@ namespace ParkingManagement.Tests.Controllers
         [Fact]
         public async Task AddParkingSpace_Returns_OkObjectResult_With_Success_True()
         {
-            var mockBL = new Mock<IBL>();
-            var mockLog = new Mock<ILog>();
-            var controller = new ParkingSpaceAPIController(mockBL.Object, mockLog.Object);
-            var modelToAdd = new ParkingSpaceModel(); 
-
-            mockBL.Setup(bl => bl.AddParkingSpaceAsync(modelToAdd)).ReturnsAsync(true);
+            // Arrange
+            var modelToAdd = new ParkingSpaceModel();
+            _mockBL.Setup(bl => bl.AddParkingSpaceAsync(modelToAdd)).ReturnsAsync(true);
 
             // Act
-            var result = await controller.AddParkingSpace(modelToAdd);
+            var result = await _controller.AddParkingSpace(modelToAdd);
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var response = okResult.Value; 
-            var successProperty = response.GetType().GetProperty("success"); 
-            var successValue = successProperty.GetValue(response); 
+            var response = okResult.Value;
+            var successProperty = response.GetType().GetProperty("success");
+            var successValue = successProperty.GetValue(response);
 
-            Assert.IsType<bool>(successValue); 
-            Assert.True((bool)successValue); 
+            Assert.IsType<bool>(successValue);
+            Assert.True((bool)successValue);
         }
+
         [Fact]
         public async Task DeleteParkingSpace_Returns_OkObjectResult_With_Success_True()
         {
             // Arrange
-            var mockBL = new Mock<IBL>();
-            var mockLog = new Mock<ILog>();
-            var controller = new ParkingSpaceAPIController(mockBL.Object, mockLog.Object);
-            var titleToDelete = "A01"; 
-
-            mockBL.Setup(bl => bl.DeleteParkingSpaceAsync(titleToDelete)).ReturnsAsync(true);
+            var titleToDelete = "A01";
+            _mockBL.Setup(bl => bl.DeleteParkingSpaceAsync(titleToDelete)).ReturnsAsync(true);
 
             // Act
-            var result = await controller.DeleteParkingSpace(titleToDelete);
+            var result = await _controller.DeleteParkingSpace(titleToDelete);
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var response = okResult.Value; 
-            var successProperty = response.GetType().GetProperty("success"); 
-            var successValue = successProperty.GetValue(response); 
+            var response = okResult.Value;
+            var successProperty = response.GetType().GetProperty("success");
+            var successValue = successProperty.GetValue(response);
 
-            Assert.IsType<bool>(successValue); 
-            Assert.True((bool)successValue); 
+            Assert.IsType<bool>(successValue);
+            Assert.True((bool)successValue);
         }
-
-
     }
 }

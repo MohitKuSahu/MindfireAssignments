@@ -1,25 +1,38 @@
 $(document).ready(function () {
     $('#signupForm').submit(function (event) {
         event.preventDefault(); // Prevent form submission
+         
+        var email = $('#email').val();
+        var password = $('#password').val();
+        var confirmPassword = $('#confirmPassword').val();
+        var name = $('#name').val();
+        var type = $('#type').val();
 
-        var email = encodeURIComponent($('#email').val());
-        $.ajax({
-            url: `https://localhost:7084/api/UserAPI/${email}`,
-            type: 'POST',
-            success: function (response) {
+        if (!email || !password || !confirmPassword || !name || !type) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match');
+            return;
+        }
+
+        var emailID = encodeURIComponent(email);
+        
+        ajaxRequest(`https://localhost:7084/api/UserAPI/${emailID}`, 'POST', null)
+            .done(function (response) {
                 if (response.success) {
                     alert('Email already exists. Please use a different email address.');
                 } else {
                     registerUser();
                 }
-            },
-            error: function (xhr, status, error) {
+            })
+            .fail(function (xhr, status, error) {
                 console.log('Error checking email:', error);
-            }
-        });
+            });
     });
 
-  
     function registerUser() {
         var user = {
             email: $('#email').val(),
@@ -28,21 +41,16 @@ $(document).ready(function () {
             type: $('#type').val()
         };
 
-        $.ajax({
-            url: 'https://localhost:7084/api/UserAPI',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(user),
-            success: function (response) {
+        ajaxRequest('https://localhost:7084/api/UserAPI', 'POST', JSON.stringify(user))
+            .done(function (response) {
                 if (response) {
-                    window.location.href = "login.html";
                     alert("Account Created. You are going to redirect to LoginPage.")
+                    window.location.href = "login.html";
                 }
-            },
-            error: function (xhr, status, error) {
-                alert("Success");
+            })
+            .fail(function (xhr, status, error) {
+                alert("Registration failed");
                 console.log('Registration failed:', error);
-            }
-        });
+            });
     }
 });

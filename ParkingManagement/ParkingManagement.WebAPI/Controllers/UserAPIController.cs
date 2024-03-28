@@ -11,43 +11,58 @@ namespace ParkingManagement.WebAPI.Controllers
     public class UserAPIController : ControllerBase
     {
 
-        private readonly IConfiguration _config;
-        private readonly IBL _userBAL;
+        private readonly IBL _BAL;
         private readonly ILog _Log;
 
-        public UserAPIController(IConfiguration config, IBL userBAL, ILog Log)
+        public UserAPIController(IBL userBAL, ILog Log)
         {
-            _config = config;
-            _userBAL = userBAL;
+            _BAL = userBAL;
             _Log = Log;
         }
         [HttpPost]
         public async Task<ActionResult> InsertUser(UserModel user)
         {
-
-            bool flag = await _userBAL.InsertUser(user);
-            if (flag)
+            try
             {
-                return Ok(flag);
+                bool flag = await _BAL.InsertUser(user);
+                if (flag)
+                {
+                    return Ok(flag);
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return NotFound();
+                _Log.AddException(ex);
+                return BadRequest(ex);
             }
+            
         }
 
         [HttpPost("{email}")]
         public async Task<ActionResult> CheckEmail(string email)
         {
-            bool success = await _userBAL.CheckIfEmailAlreadyExists(email);
-            if (success)
+            try
             {
-                return Ok(new { success = true });
+                bool success = await _BAL.CheckIfEmailAlreadyExists(email);
+                if (success)
+                {
+                    return Ok(new { success = true });
+                }
+                else
+                {
+                    return Ok(new { success = false });
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return Ok(new { success = false });
-            }
+                _Log.AddException(ex);
+                return BadRequest(ex);
+            }   
+             
         }
     }
 }
