@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ParkingManagement.WebAPI.Controllers
 {
-    [Authorize(Roles = "Booking Counter Agent")]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ReportAPIController : ControllerBase
@@ -22,7 +22,23 @@ namespace ParkingManagement.WebAPI.Controllers
             _Log = log;
         }
 
-       
+        [HttpGet]
+        public async Task<ActionResult<List<ReportModel>>> GetParkingSpaceLists()
+        {
+            try
+            {
+                var data = await _BAL.GetParkingZoneandGetParkingSpaceAsync();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                _Log.AddException(ex);
+                return BadRequest(ex);
+            }
+
+        }
+
+        [Authorize(Roles = "Booking Counter Agent")]
         [HttpGet("{startDate}/{endDate}")]
         public async Task<ActionResult<List<ReportModel>>> GetReportAsync(string startDate, string endDate)
         {

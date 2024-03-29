@@ -21,12 +21,10 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         },
         body: JSON.stringify(user)
     })
-    .then(response => {
+    .then(async response => {
         if (!response.ok) {
-            alert('Error in Ajax Request')
-            return response.text().then(errorMessage => {
-                throw new Error(errorMessage);
-            });
+            const errorMessage = await response.text();
+            throw new Error(errorMessage);
         }
         return response.json();
     })

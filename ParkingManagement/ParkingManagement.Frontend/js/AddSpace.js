@@ -41,27 +41,4 @@ $(document).ready(function() {
             alert('It is restricted only to Booking Agent. ' + error);
         });
     });
-
-    $('#delete-btn').click(function(event) {
-        event.preventDefault(); 
-        var parkingZoneTitle = $('#parking-zone').val();
-        var parkingSpaceNumber = $('#parking-space').val();
-
-        if (parkingSpaceNumber < 10) {
-            parkingSpaceNumber = '0' + parkingSpaceNumber;
-        }
-        var parkingSpaceTitle = parkingZoneTitle + parkingSpaceNumber; 
-
-        ajaxRequest(`https://localhost:7084/api/ParkingSpaceAPI/${parkingSpaceTitle}`, 'DELETE', null)
-        .done(function(response) {
-            if (response.success) {
-                alert('Parking space deleted successfully!');
-            } else {
-                alert('Failed to delete parking space. It does not exist.');
-            }
-        })
-        .fail(function(xhr, status, error) {
-            alert('It is restricted only to Booking Agent ' + error);
-        });
-    });
 });

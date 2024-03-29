@@ -85,6 +85,11 @@ namespace ParkingManagement.BL
         {
             return await _dataService.CheckIfUserExists(user);
         }
+
+         public async Task<List<ReportModel>> GetParkingZoneandGetParkingSpaceAsync()
+        {
+            return await _dataService.GetParkingZoneandGetParkingSpaceAsync();
+        }
         public async Task<List<ReportModel>> GetParkingReportAsync(DateOnly startDate, DateOnly endDate)
         {
             return await _dataService.GetParkingReportAsync(startDate, endDate);

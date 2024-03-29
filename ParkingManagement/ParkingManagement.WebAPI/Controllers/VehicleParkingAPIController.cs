@@ -61,8 +61,15 @@ namespace ParkingManagement.WebAPI.Controllers
         {
             try
             {
-                await _BAL.UpdateVehicleAsync(model);
-                return Ok();
+                bool updateResult = await _BAL.UpdateVehicleAsync(model);
+                if (updateResult)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status409Conflict, "A vehicle with the same number already Booked");
+                }
             }
             catch (Exception ex) { 
             

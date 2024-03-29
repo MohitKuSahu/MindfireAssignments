@@ -198,7 +198,7 @@ $(document).ready(function () {
 
         if (!pattern.test(vehicleRegistration)) {
             alert("Invalid vehicle registration number.");
-            return ;
+            return;
         }
 
         var bookingDate = new Date(bookingDateTime);
@@ -217,8 +217,6 @@ $(document).ready(function () {
             parkingSpaceId: parkingSpaceId
         };
 
-        console.log("Submitting data:", requestData);
-
         ajaxRequest("https://localhost:7084/api/VehicleParkingAPI", "PUT", JSON.stringify(requestData))
             .done(function (response) {
                 alert('Booking Successful');
@@ -226,7 +224,7 @@ $(document).ready(function () {
                 renderParkingSpaces(parkingZoneId);
             })
             .fail(function (jqXHR, textStatus, errorThrown) {
-                alert('Error in Booking');
+                alert(jqXHR.responseText); 
                 console.error('Error submitting booking:', textStatus, errorThrown);
             });
     });

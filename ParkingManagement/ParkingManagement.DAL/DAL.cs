@@ -186,39 +186,48 @@ namespace ParkingManagement.DAL
         public async Task<bool> UpdateVehicleAsync(VehicleParkingModel model)
         {
 
-            var result = await _parkingManagementContext.VehicleParkings
-       .FirstOrDefaultAsync(v => v.ParkingZoneId == model.ParkingZoneId && v.ParkingSpaceId == model.ParkingSpaceId);
-            if (result != null)
+            var vehicleNumber = await _parkingManagementContext.VehicleParkings.AnyAsync(u =>u.VehicleRegistration==model.VehicleRegistration);
+            if (vehicleNumber)
             {
-                result.BookingDateTime = model.BookingDateTime;
-                result.ReleaseDateTime = model.ReleaseDateTime;
-                result.VehicleRegistration = model.VehicleRegistration;
-                await _parkingManagementContext.SaveChangesAsync();
-                var today = DateOnly.FromDateTime(DateTime.Now);
-
-                await AddBookings(model.ParkingSpaceId, model.ParkingZoneId, today);
-
-                return true;
-
+                return false; 
             }
             else
             {
-                var newModel = new VehicleParking()
+                var result = await _parkingManagementContext.VehicleParkings
+    .FirstOrDefaultAsync(v => v.ParkingZoneId == model.ParkingZoneId && v.ParkingSpaceId == model.ParkingSpaceId);
+                if (result != null)
                 {
-                    ParkingZoneId = model.ParkingZoneId,
-                    ParkingSpaceId = model.ParkingSpaceId,
-                    BookingDateTime = model.BookingDateTime,
-                    ReleaseDateTime = model.ReleaseDateTime,
-                    VehicleRegistration = model.VehicleRegistration,
+                    result.BookingDateTime = model.BookingDateTime;
+                    result.ReleaseDateTime = model.ReleaseDateTime;
+                    result.VehicleRegistration = model.VehicleRegistration;
+                    await _parkingManagementContext.SaveChangesAsync();
+                    var today = DateOnly.FromDateTime(DateTime.Now);
 
-                };
-                _parkingManagementContext.VehicleParkings.Add(newModel);
-                await _parkingManagementContext.SaveChangesAsync();
+                    await AddBookings(model.ParkingSpaceId, model.ParkingZoneId, today);
 
-                var today = DateOnly.FromDateTime(DateTime.Now);
-                await AddBookings(model.ParkingSpaceId, model.ParkingZoneId, today);
-                return true;
+                    return true;
+
+                }
+                else
+                {
+                    var newModel = new VehicleParking()
+                    {
+                        ParkingZoneId = model.ParkingZoneId,
+                        ParkingSpaceId = model.ParkingSpaceId,
+                        BookingDateTime = model.BookingDateTime,
+                        ReleaseDateTime = model.ReleaseDateTime,
+                        VehicleRegistration = model.VehicleRegistration,
+
+                    };
+                    _parkingManagementContext.VehicleParkings.Add(newModel);
+                    await _parkingManagementContext.SaveChangesAsync();
+
+                    var today = DateOnly.FromDateTime(DateTime.Now);
+                    await AddBookings(model.ParkingSpaceId, model.ParkingZoneId, today);
+                    return true;
+                }
             }
+         
         }
 
 
@@ -300,6 +309,30 @@ namespace ParkingManagement.DAL
             var user = await _parkingManagementContext.Users.AnyAsync(u => u.Email == userEmail);
             return user;
         }
+
+        public async Task<List<ReportModel>> GetParkingZoneandGetParkingSpaceAsync()
+        {
+            var parkingSpaces = await _parkingManagementContext.ParkingSpaces.ToListAsync();
+            var report = new List<ReportModel>();
+
+            foreach (var ps in parkingSpaces)
+            {
+                var zone = await _parkingManagementContext.ParkingZones.FindAsync(ps.ParkingZoneId);
+                if (zone == null)
+                    continue;
+
+                report.Add(new ReportModel
+                {
+                    ParkingZoneTitle = zone.ParkingZoneTitle,
+                    ParkingSpaceTitle= ps.ParkingSpaceTitle
+                });
+            }
+            return report.OrderBy(r => r.ParkingZoneTitle)
+                      .ThenBy(r => r.ParkingSpaceTitle)
+                      .ToList();
+        }
+
+
         public async Task<List<ReportModel>> GetParkingReportAsync(DateOnly startDate, DateOnly endDate)
         {
             var parkingSpaces = await _parkingManagementContext.ParkingSpaces.ToListAsync();

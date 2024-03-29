@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/Navbar.css">
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
         <div class="container">
             <a class="navbar-brand" >    
-                <i class="fas fa-car"></i> <!-- Font Awesome car icon -->
+                <i class="fas fa-car"></i>
                 Parking Management
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -29,12 +27,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="Reports.html">Report</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="AddSpace.html">Add Space</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="spaceDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Spaces
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="spaceDropdown">
+                            <a class="dropdown-item" href="AddSpace.html">Add Space</a>
+                            <a class="dropdown-item" href="DeleteSpace.html">Delete Space</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.html">
-                            Logout <i class="fas fa-sign-out-alt"></i> <!-- Font Awesome logout icon -->
+                            Logout <i class="fas fa-sign-out-alt"></i> 
                         </a>
                     </li>
                 </ul>
@@ -44,6 +48,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </body>
 </html>
