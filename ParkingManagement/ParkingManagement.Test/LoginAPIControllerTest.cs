@@ -31,15 +31,16 @@ namespace ParkingManagement.Tests.Controllers
         public async Task LoginAsync_Returns_OkObjectResult_With_Token_For_Valid_User()
         {
             // Arrange
-            var user = new UserModel { 
-                Name = "Test",      
-                Email = "test@example.com", 
-                Password = "password" ,
-                Type= "Booking Counter Agent"
+            var user = new UserModel
+            {
+                Name = "Test",
+                Email = "test@example.com",
+                Password = "password",
+                Type = "Booking Counter Agent"
             };
             var expectedUserId = 1;
             _mockUserBAL.Setup(bl => bl.CheckIfUserExists(user)).ReturnsAsync(expectedUserId);
-            _mockConfig.Setup(config => config["Jwt:Key"]).Returns("TestKey");
+            _mockConfig.Setup(config => config["Jwt:Key"]).Returns("!TestKeyWithAtLeast256Bytes!1234");
             _mockConfig.Setup(config => config["Jwt:Issuer"]).Returns("TestIssuer");
             _mockConfig.Setup(config => config["Jwt:Audience"]).Returns("TestAudience");
 
@@ -50,9 +51,15 @@ namespace ParkingManagement.Tests.Controllers
             var okResult = Assert.IsType<OkObjectResult>(result);
             var response = okResult.Value as dynamic;
             Assert.NotNull(response);
-            Assert.NotNull(response.Token);
-            Assert.Equal(expectedUserId, response.UserId);
+
+            // Use GetProperty method to access properties
+            var token = response.GetType().GetProperty("Token")?.GetValue(response, null) as string;
+            var userId = response.GetType().GetProperty("UserId")?.GetValue(response, null);
+
+            Assert.NotNull(token);
+            Assert.Equal(expectedUserId, userId);
         }
+
 
         [Fact]
         public async Task LoginAsync_Returns_Unauthorized_For_Invalid_User()

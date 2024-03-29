@@ -289,7 +289,6 @@ namespace ParkingManagement.DAL
             if (users != null && users.Password == user.Password)
             {
                 userId = users.UserId;
-                user.UserId = userId;
                 user.Type = users.Type;
             }
 

@@ -172,7 +172,7 @@ $(document).ready(function () {
         renderParkingSpaces(zoneId);
         setTimeout(function () {
             $('#auto-refresh-indicator').hide();
-        }, 2000);
+        }, 1000);
     }
 
     setInterval(function () {

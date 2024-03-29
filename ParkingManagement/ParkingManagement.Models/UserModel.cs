@@ -14,7 +14,7 @@ namespace ParkingManagement.Models
 
         public string Email { get; set; } = null!;
 
-        public string? Password { get; set; }
+        public string Password { get; set; } = null!;
 
         public string Type { get; set; } = null!;
     }

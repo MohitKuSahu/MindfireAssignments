@@ -34,6 +34,7 @@ public class LoginAPIController : ControllerBase
         try
         {
             userId = await _BAL.CheckIfUserExists(user);
+            user.UserId = userId;
         }
         catch (Exception ex)
         {

@@ -65,8 +65,9 @@ namespace ParkingManagement.Tests.Controllers
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
-            var response = Assert.IsType<dynamic>(okResult.Value);
-            Assert.True(response.success);
+            var response = okResult.Value as dynamic; 
+            bool success = response.GetType().GetProperty("success").GetValue(response, null);
+            Assert.True(success);
         }
 
         [Fact]
@@ -81,8 +82,9 @@ namespace ParkingManagement.Tests.Controllers
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
-            var response = Assert.IsType<dynamic>(okResult.Value);
-            Assert.False(response.success);
+            var response = okResult.Value as dynamic; // Cast to dynamic to access properties
+            bool success = response.GetType().GetProperty("success").GetValue(response, null);
+            Assert.False(success);
         }
 
 
