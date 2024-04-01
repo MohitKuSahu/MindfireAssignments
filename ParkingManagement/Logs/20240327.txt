@@ -183,4 +183,4 @@ Error Number:547,State:0,Class:16
    at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
    at ParkingManagement.DAL.DAL.DeleteParkingSpaceAsync(String title) in D:\MindfireAssignment\ParkingManagement\ParkingManagement.DAL\DAL.cs:line 144
    at ParkingManagement.BL.BL.DeleteParkingSpaceAsync(String title) in D:\MindfireAssignment\ParkingManagement\ParkingManagement.BL\BL.cs:line 52
-   at ParkingManagement.WebAPI.Controllers.ParkingSpaceAPIController.DeleteParkingSpace(String title) in D:\MindfireAssignment\ParkingManagement\ParkingManagement.WebAPI\Controllers\ParkingSpaceAPIController.cs:line 87
+   at ParkingManagement.WebAPI.Controllers.ParkingSpaceAPIController.DeleteParkingSpace(String title) in D:\MindfireAssignment\ParkingManagement\ParkingManagement.WebAPI\Controllers\ParkingSpaceAPIController.cs:line 87 
