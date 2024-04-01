@@ -194,7 +194,7 @@ namespace ParkingManagement.DAL
             else
             {
                 var result = await _parkingManagementContext.VehicleParkings
-    .FirstOrDefaultAsync(v => v.ParkingZoneId == model.ParkingZoneId && v.ParkingSpaceId == model.ParkingSpaceId);
+                                   .FirstOrDefaultAsync(v => v.ParkingZoneId == model.ParkingZoneId && v.ParkingSpaceId == model.ParkingSpaceId);
                 if (result != null)
                 {
                     result.BookingDateTime = model.BookingDateTime;

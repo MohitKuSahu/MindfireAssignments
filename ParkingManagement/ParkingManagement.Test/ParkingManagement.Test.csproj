@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -24,6 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ParkingManagement.BL\ParkingManagement.BL.csproj" />
+    <ProjectReference Include="..\ParkingManagement.DAL\ParkingManagement.DAL.csproj" />
     <ProjectReference Include="..\ParkingManagement.WebAPI\ParkingManagement.WebAPI.csproj" />
   </ItemGroup>
 
